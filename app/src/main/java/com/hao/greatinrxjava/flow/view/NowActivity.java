@@ -3,7 +3,10 @@ package com.hao.greatinrxjava.flow.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hao.greatinrxjava.R;
 import com.lucky.baselib.base.BaseActivity;
@@ -79,6 +82,19 @@ public class NowActivity extends BaseActivity<NowPresenter> {
         mTvPres.setText("气压：" + now.getPres());
         mTvTmp.setText("温度：" + now.getTmp());
         mTvVis.setText("能见度：" + now.getVis());
+
+        FrameLayout layBottomContainer = (FrameLayout) findViewById(R.id.lay_bottom_container);
+        //inflate
+        final View bottomView = getLayoutInflater().inflate(R.layout.view_bottom_web_show, null);
+        final TextView tvBottomShow = (TextView) bottomView.findViewById(R.id.tv_bottom_click);
+        tvBottomShow.setText("开启实时更新");
+        tvBottomShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(NowActivity.this, "实时更新中...", Toast.LENGTH_SHORT).show();
+            }
+        });
+        layBottomContainer.addView(bottomView);
     }
 
     @Override

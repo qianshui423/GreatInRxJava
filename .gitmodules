@@ -1,3 +1,4 @@
 [submodule "OpenSpace"]
 	path = OpenSpace
 	url = https://github.com/qianshui423/OpenSpace.git
+	branch = stable
